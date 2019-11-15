@@ -1,0 +1,13 @@
+{
+  "name": "smartbuf-ts",
+  "version": "1.0.0",
+  "description": "smartbuf's javascript/typescript implementation.",
+  "main": "index.js",
+  "repository": "git@github.com:smartbuf/smartbuf-ts.git",
+  "author": "sisyphsu@gmail.com",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
+  }
+}
