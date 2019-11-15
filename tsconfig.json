@@ -6,7 +6,10 @@
     "outDir": "dist",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "esModuleInterop": true
   },
   "include": [
