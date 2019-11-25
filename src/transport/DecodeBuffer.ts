@@ -1,4 +1,5 @@
 import {NumberUtils} from "utils/NumberUtils";
+import {UTF8Utils} from "utils/UTF8Utils";
 
 export class DecodeBuffer {
 
@@ -64,8 +65,9 @@ export class DecodeBuffer {
     }
 
     public readString(): string {
-        // TODO read UTF8
-        return "";
+        let len = this.readVarUint();
+        let bytes = this.readByteArray(len);
+        return UTF8Utils.decodeUTF8(bytes);
     }
 
     public readBooleanArray(len: number): boolean[] {

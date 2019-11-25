@@ -1,4 +1,5 @@
 import {NumberUtils} from "utils/NumberUtils";
+import {UTF8Utils} from "utils/UTF8Utils";
 
 export class EncodeBuffer {
 
@@ -65,30 +66,10 @@ export class EncodeBuffer {
     }
 
     public writeString(str: string): void {
-        //     int strLen = str.length();
-        //     // predict the byte number for varuint of utf8-bytes length
-        //     int expectedLen = strLen * 3;
-        //     if (expectedLen < 1 << 7) {
-        //     expectedLen = 1;
-        // } else if (expectedLen < 1 << 14) {
-        //     expectedLen = 2;
-        // } else if (expectedLen < 1 << 21) {
-        //     expectedLen = 3;
-        // } else {
-        //     expectedLen = 5;
-        // }
-        // int writeFrom = offset + expectedLen;
-        // if (data.length < writeFrom + strLen * 3) {
-        //     this.ensureCapacity(writeFrom + strLen * 3);
-        // }
-        // int writeTo = UTF8Utils.encode(str, data, writeFrom);
-        // int len = writeTo - writeFrom;
-        // if (writeVarUint(len) < expectedLen) {
-        //     System.arraycopy(data, writeFrom, data, offset, len);
-        // }
-        // this.offset += len;
+        let bytes = UTF8Utils.encodeUTF8(str);
+        this.writeVarUint(bytes.length);
+        this.writeByteArray(bytes);
     }
-
 
     public writeBooleanArray(arr: boolean[]): void {
         let len = arr.length;
